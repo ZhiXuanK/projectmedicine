@@ -26,7 +26,8 @@ public class UserService {
     }
 
     public Boolean checkPassword(String username, String password){
-        if (repo.getPassword(username).equals(password)){
+        User repoUser = jsonToUser(repo.getUser(username));
+        if (repoUser.getPassword().equals(password)){
             return true;
         } else {
             return false;

@@ -22,7 +22,7 @@ public class UserRepository {
     }
 
     //hget login_details username
-    public String getPassword(String username){
+    public String getUser(String username){
         return (String)template.opsForHash().get("login_details", username);
     }
 

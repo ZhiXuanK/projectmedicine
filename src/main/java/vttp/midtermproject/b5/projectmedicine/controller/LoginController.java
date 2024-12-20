@@ -42,7 +42,7 @@ public class LoginController {
     ){
 
         //check if username exist
-        if (svc.checkIfUserExist(user)){
+        if (!svc.checkIfUserExist(user)){
             FieldError err = new FieldError("user", "username", "user does not exist. please create an account" );
             bindings.addError(err);
             return "login";

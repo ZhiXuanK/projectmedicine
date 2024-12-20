@@ -12,7 +12,9 @@
             <tr>
                 <td>name: </td>
                 <td>
-                    <span data-th-text="*{name}" data-th-field="*{name}" value="*{name}"></span>
+                    <!--<span name="name" data-th-text="${name}" data-th-field="*{name}" data-th-value="${name}"></span>-->
+                    <input type="hidden" data-th-field="*{name}">
+                    <span data-th-text="*{name}"></span>
                 </td>
                 <td>
                     <!--error-->
@@ -44,11 +46,29 @@
                     <input type="radio" id="before" data-th-field="*{food}" value="before">
                     <label for="before">before food</label>
                     <br>
-                    <input type="radio" id="after" data-th-field="*{field}" value="after">
+                    <input type="radio" id="after" data-th-field="*{food}" value="after">
                     <label for="after">after food</label>
                     <br>
                     <input type="radio" id="na" data-th-field="*{food}" value="na">
                     <label for="na">not applicable</label>
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>medication start date: </td>
+                <td>
+                    <input type="date" data-th-field="*{startDate}">
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>medication end date: </td>
+                <td>
+                    <input type="date" data-th-field="*{endDate}">
                 </td>
                 <td>
                     <!--error-->

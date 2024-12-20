@@ -18,7 +18,7 @@ public class VisitService {
     private VisitRepository repo;
 
     public void addVisit(Visit visit){
-        repo.addVisit(visit.getUsername(), visitToJsonString(visit));
+        repo.addVisit(visit.getUsername(), visit.getUUID(), visitToJsonString(visit));
     }
 
     public String visitToJsonString(Visit visit){
@@ -30,6 +30,7 @@ public class VisitService {
             .add("name", visit.getName())
             .add("date", visitDate)
             .add("note", visit.getNote())
+            .add("UUID", visit.getUUID())
             .build();
         
         return obj.toString();
@@ -45,11 +46,10 @@ public class VisitService {
         visit.setName(obj.getString("name"));
         visit.setDate(new Date(obj.getJsonNumber("date").longValue()));
         visit.setNote(obj.getString("note"));
+        visit.setUUID(obj.getString("UUID"));
 
         return visit;
 
     }
-
-
 
 }

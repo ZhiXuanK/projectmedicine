@@ -12,12 +12,12 @@ public class VisitRepository {
     private RedisTemplate<String, String> template;
 
     //hset visit username visit
-    public void addVisit(String username, String visit){
-        template.opsForHash().put("visit",username, visit);
+    public void addVisit(String username, String UUID, String visit){
+        template.opsForHash().put("visit_" + username, UUID, visit);
     }
 
     //hget visit username
-    public String getVisit(String username){
-        return (String)template.opsForHash().get("visit", username);
+    public String getVisit(String username, String UUID){
+        return (String)template.opsForHash().get("visit_" + username, UUID);
     }
 }

@@ -15,7 +15,7 @@
                     <input type="text" data-th-field="*{name}">
                 </td>
                 <td>
-                    <!--error-->
+                    <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"></span>
                 </td>
             </tr>
             <tr>
@@ -30,7 +30,7 @@
             <tr>
                 <td>notes: </td>
                 <td>
-                    <input type="text" data-th-field="*{notes}">
+                    <input type="text" data-th-field="*{note}">
                 </td>
                 <td>
                     <!--error-->

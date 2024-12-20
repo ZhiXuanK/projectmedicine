@@ -15,11 +15,17 @@
                 <td>
                     <input type="text" data-th-field="*{username}">
                 </td>
+                <td>
+                    <span data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}" data-th-errorclass="error"></span>
+                </td>
             </tr>
             <tr>
                 <td>Password: </td>
                 <td>
                     <input type="password" data-th-field="*{password}">
+                </td>
+                <td>
+                    <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" data-th-errorclass="error"></span>
                 </td>
             </tr>
             <tr>

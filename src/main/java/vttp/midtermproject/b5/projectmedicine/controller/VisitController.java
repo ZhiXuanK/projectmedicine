@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import vttp.midtermproject.b5.projectmedicine.Constants;
 import vttp.midtermproject.b5.projectmedicine.model.Visit;
 import vttp.midtermproject.b5.projectmedicine.service.VisitService;
 
@@ -44,7 +45,9 @@ public class VisitController {
         if (bindings.hasErrors()){
             return "add_visit";
         }
+
         visit.setUsername((String)sess.getAttribute("username"));
+        visit.setUUID(Constants.generateUUID());
 
         //add visit into redis
         svc.addVisit(visit);
