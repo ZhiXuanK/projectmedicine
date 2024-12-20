@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST" action="/medicine/add" data-th-object="${medicine}">
+        <table>
+            <tr>
+                <td>name: </td>
+                <td>
+                    <span data-th-text="*{name}" data-th-field="*{name}" value="*{name}"></span>
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>frequency of medication consumption</td>
+                <td>
+                    <input type="checkbox" id="morning" data-th-field="*{frequency}" value="morning">
+                    <label for="morning">morning</label>
+                    <br>
+                    <input type="checkbox" id="afternoon" data-th-field="*{frequency}" value="afternoon">
+                    <label for="afternoon">afternoon</label>
+                    <br>
+                    <input type="checkbox" id="night" data-th-field="*{frequency}" value="night">
+                    <label for="night">night</label>
+                    <br>
+                    <input type="checkbox" id="as needed" data-th-field="*{frequency}" value="as needed">
+                    <label for="as needed">as needed</label>
+                    <br>
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>before or after food?</td>
+                <td>
+                    <input type="radio" id="before" data-th-field="*{food}" value="before">
+                    <label for="before">before food</label>
+                    <br>
+                    <input type="radio" id="after" data-th-field="*{field}" value="after">
+                    <label for="after">after food</label>
+                    <br>
+                    <input type="radio" id="na" data-th-field="*{food}" value="na">
+                    <label for="na">not applicable</label>
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">add medicine</button>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

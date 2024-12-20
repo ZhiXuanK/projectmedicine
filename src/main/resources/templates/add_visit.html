@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST" action="/visit/add" data-th-object="${visit}">
+        <table>
+            <tr>
+                <td>doctor's name:</td>
+                <td>
+                    <input type="text" data-th-field="*{name}">
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>date of visit: </td>
+                <td>
+                    <input type="date" data-th-field="*{date}">
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td>notes: </td>
+                <td>
+                    <input type="text" data-th-field="*{notes}">
+                </td>
+                <td>
+                    <!--error-->
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">add visit</button>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+    </form>
+
+</body>
+</html>

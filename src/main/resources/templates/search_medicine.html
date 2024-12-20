@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Add medication</h3>
+    
+    <form method="GET" action="/medicine/search">
+        <table>
+            <tr>
+                <td>name: </td>
+                <td>
+                    <input type="text" name="medicine_name">
+                </td>
+                <td data-th-unless="${#strings.isEmpty(error)}">
+                    <span data-th-text="${error}"></span>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

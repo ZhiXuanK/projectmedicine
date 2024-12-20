@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST" action="/createuser" data-th-object="${user}">
+        <table>
+            <tr>
+                <td>Username: </td>
+                <td>
+                    <input type="text" data-th-field="*{username}">
+                </td>
+                <td>
+                    <span data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td>
+                    <input type="password" data-th-field="*{password}">
+                </td>
+                <td>
+                    <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" data-th-errorclass="error"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Confirm your password: </td>
+                <td>
+                    <input type="password" field="${confirm_password}">
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">log in</button>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
