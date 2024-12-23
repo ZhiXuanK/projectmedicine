@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+    <a data-th-href="@{/dashboard/medicine}">
+        <button type="button">view medicine dashboard</button>
+    </a>
+    <a data-th-href="@{/dashboard/visit}">
+        <button type="button">view visit dashboard</button>
+    </a>
+
+    <a data-th-href="@{/medicine/search}">
+        <button type="button">add medicine</button>
+    </a>
+
+    <form method="POST" action="/dashboard/logout">
+        <button type="submit">log out</button>
+    </form>
+    
+    <table>
+        <tr>
+            <td>medicine name</td>
+            <td>start date</td>
+            <td>end date</td>
+            <td>frequency of consumption</td>
+            <td>before/after food</td>
+            <td>active ingredients</td>
+            <td>adverse reactions</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr data-th-each="m : ${medicineList}" data-th-object="${m}">
+            <td data-th-text="*{name}"></td>
+            <td data-th-text="*{#dates.format(startDate, 'dd MMM yyyy')}"></td>
+            <td data-th-text="*{#dates.format(endDate, 'dd MMM yyyy')}"></td>
+            <td>
+                <ul data-th-each="f : *{frequency}">
+                    <li data-th-text="${f}"></li>
+                </ul>
+            </td>
+            <td data-th-text="*{food}"></td>
+            <td>
+                <ul data-th-each="a : *{active_ingredients}">
+                    <li data-th-text="${a}"></li>
+                </ul>
+            </td>
+            <td data-th-text="*{adverse_reactions}"></td>
+            <td>
+                <a data-th-href="@{/medicine/{UUID}(UUID=*{UUID})}">
+                    <button type="button">edit</button>
+                </a>
+            </td>
+            <td>
+                <form method="POST" action="/medicine/delete">
+                    <input type="hidden" name="UUID" data-th-value="*{UUID}">
+                    <button type="submit">delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

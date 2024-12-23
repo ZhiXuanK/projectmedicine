@@ -7,6 +7,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class MedicineController {
     @Autowired
     private MedicineService svc;
 
-    @GetMapping
+    @GetMapping("/search")
     public String getMedicine(
         HttpSession sess
     ){
@@ -40,7 +41,7 @@ public class MedicineController {
         return "search_medicine";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/add")
     public String getMedicineSearch(
         @RequestParam String medicine_name,
         Model model,
@@ -87,6 +88,54 @@ public class MedicineController {
         return "redirect:/dashboard";
 
     }
+
+    //EDIT MEDICINE
+
+    @GetMapping("/{UUID}")
+    public String getEditMedicine(
+        @PathVariable String UUID,
+        Model model,
+        HttpSession sess
+    ){
+        if (sess.getAttribute("username") == null){
+            return "redirect:/login";
+        }
+
+        String username = (String) sess.getAttribute("username");
+
+        Medicine medicine = svc.getMedicine(username, UUID);
+
+        model.addAttribute("medicine", medicine);
+
+        return "edit_medicine";
+
+    }
+
+    @PostMapping("/edit")
+    public String postEditMedicine(
+        @ModelAttribute Medicine medicine,
+        Model model,
+        HttpSession sess
+    ){
+        String username = (String) sess.getAttribute("username");
+
+        svc.addMedicine(username, medicine);
+
+        return "redirect:/dashboard/medicine";
+    }
     
+    //DELETE
+    @PostMapping("/delete")
+    public String postDeleteMedicine(
+        @RequestBody MultiValueMap<String, String> form,
+        HttpSession sess
+    ){
+        String username = (String) sess.getAttribute("username");
+
+        String uuid = form.getFirst("UUID");
+        svc.deleteMedicine(username, uuid);
+
+        return "redirect:/dashboard/medicine";
+    }
     
 }

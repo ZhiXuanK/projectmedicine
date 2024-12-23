@@ -9,44 +9,41 @@
 </head>
 <body>
     
-    <form method="POST" action="/visit/add" data-th-object="${visit}">
+    <form method="POST" action="/visit/edit" data-th-object="${visit}">
         <table>
             <tr>
-                <td>doctor's name:</td>
+                <td>name: </td>
                 <td>
-                    <input type="text" data-th-field="*{name}">
+                    <input type="hidden" data-th-field="*{name}">
+                    <span data-th-text="*{name}"></span>
                 </td>
-                <td>
-                    <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}" data-th-errorclass="error"></span>
-                </td>
+                <td></td>
             </tr>
             <tr>
-                <td>date of visit: </td>
+                <td>date: </td>
                 <td>
-                    <input type="date" data-th-field="*{date}">
+                    <input type="hidden" data-th-field="*{date}">
+                    <span data-th-text="*{date}"></span>
                 </td>
-                <td>
-                    <!--error-->
-                </td>
+                <td></td>
             </tr>
             <tr>
                 <td>notes: </td>
                 <td>
                     <input type="text" data-th-field="*{note}">
                 </td>
-                <td>
-                    <!--error-->
-                </td>
+                <td></td>
             </tr>
             <tr>
-                <td></td>
                 <td>
-                    <button type="submit">add visit</button>
+                    <input type="hidden" data-th-field="*{UUID}">
+                </td>
+                <td>
+                    <button type="submit">update</button>
                 </td>
                 <td></td>
             </tr>
         </table>
-
     </form>
 
 </body>

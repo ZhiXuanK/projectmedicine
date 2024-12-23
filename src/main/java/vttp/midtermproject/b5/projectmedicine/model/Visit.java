@@ -63,6 +63,12 @@ public class Visit {
         this.note = note;
     }
 
+    @Override
+    public String toString() {
+        return "Visit [username=" + username + ", name=" + name + ", date=" + date + ", note=" + note + ", UUID=" + UUID
+                + "]";
+    }
+
     
 
 }

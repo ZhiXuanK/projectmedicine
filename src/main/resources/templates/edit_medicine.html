@@ -9,18 +9,15 @@
 </head>
 <body>
     
-    <form method="POST" action="/medicine/add" data-th-object="${medicine}">
+    <form method="POST" action="/medicine/edit" data-th-object="${medicine}">
         <table>
             <tr>
                 <td>name: </td>
                 <td>
-                    <!--<span name="name" data-th-text="${name}" data-th-field="*{name}" data-th-value="${name}"></span>-->
                     <input type="hidden" data-th-field="*{name}">
                     <span data-th-text="*{name}"></span>
                 </td>
-                <td>
-                    <!--error-->
-                </td>
+                <td></td>
             </tr>
             <tr>
                 <td>frequency of medication consumption</td>
@@ -61,7 +58,8 @@
             <tr>
                 <td>medication start date: </td>
                 <td>
-                    <input type="date" data-th-field="*{startDate}">
+                    <input type="hidden" data-th-field="*{startDate}">
+                    <span data-th-text="*{startDate}"></span>
                 </td>
                 <td>
                     <!--error-->
@@ -77,9 +75,13 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
                 <td>
-                    <button type="submit">add medicine</button>
+                    <input type="hidden" data-th-field="*{active_ingredients}">
+                    <input type="hidden" data-th-field="*{adverse_reactions}">
+                    <input type="hidden" data-th-field="*{UUID}">
+                </td>
+                <td>
+                    <button type="submit">update</button>
                 </td>
                 <td></td>
             </tr>

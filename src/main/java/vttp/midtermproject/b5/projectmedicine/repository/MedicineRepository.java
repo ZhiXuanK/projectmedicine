@@ -40,4 +40,9 @@ public class MedicineRepository {
         return entries;
     }
 
+    //hdel medicine_username UUID
+    public void deleteMedicine(String username, String uuid){
+        template.opsForHash().delete("medicine_" + username, uuid);
+    }
+
 }

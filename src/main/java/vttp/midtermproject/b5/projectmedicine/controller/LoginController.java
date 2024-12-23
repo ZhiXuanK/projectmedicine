@@ -58,7 +58,7 @@ public class LoginController {
         //create user
         sess.setAttribute("username", user.getUsername());
         
-        return "temporarysuccess";
+        return "redirect:/dashboard";
     }
 
     

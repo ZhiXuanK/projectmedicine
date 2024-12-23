@@ -29,6 +29,11 @@ public class MedicineService {
         repo.addMedicine(username, medicine.getUUID(), med);
     }
 
+    public Medicine getMedicine(String username, String UUID){
+        Medicine medicine = jsonToMedicine(repo.getMedicine(username, UUID));
+        return medicine;
+    }
+
     public Map<String, Medicine> getAllMedicine(String username) {
         Map<String, String> allMeds = repo.getAllMedicine(username);
         Map<String, Medicine> results = new HashMap<>();
@@ -38,7 +43,12 @@ public class MedicineService {
             results.put(e.getKey(), med);
         }
 
+        //result is UUID, medicine
         return results;
+    }
+
+    public void deleteMedicine(String username, String uuid){
+        repo.deleteMedicine(username, uuid);
     }
 
     public String MedicineToJsonString(Medicine medicine) {
