@@ -6,13 +6,14 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public class Medicine {
     
     private String name;
 
-    @NotNull(message="please select how often the medication has to be taken")
+    @NotEmpty(message="please select how often the medication has to be taken")
     private List<String> frequency;
     
     @NotBlank(message="please select if the medication has to be taken before or after food")

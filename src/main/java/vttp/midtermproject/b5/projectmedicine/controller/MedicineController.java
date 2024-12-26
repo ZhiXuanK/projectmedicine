@@ -113,10 +113,15 @@ public class MedicineController {
 
     @PostMapping("/edit")
     public String postEditMedicine(
-        @ModelAttribute Medicine medicine,
+        @Valid@ModelAttribute Medicine medicine,
+        BindingResult bindings,
         Model model,
         HttpSession sess
     ){
+        System.out.println(bindings.getAllErrors());
+        if (bindings.hasErrors()){
+            return "edit_medicine";
+        }
         String username = (String) sess.getAttribute("username");
 
         svc.addMedicine(username, medicine);

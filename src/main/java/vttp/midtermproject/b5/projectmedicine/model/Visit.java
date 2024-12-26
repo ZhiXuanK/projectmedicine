@@ -5,9 +5,10 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class Visit {
+public class Visit{
     
     private String username;
 
@@ -17,6 +18,7 @@ public class Visit {
     private String name;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message="please input your visit date")
     private Date date;
 
     private String note;

@@ -41,6 +41,9 @@ public class LoginController {
         HttpSession sess
     ){
 
+        if (bindings.hasErrors()){
+            return "login";
+        }
         //check if username exist
         if (!svc.checkIfUserExist(user)){
             FieldError err = new FieldError("user", "username", "user does not exist. please create an account" );
