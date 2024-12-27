@@ -52,19 +52,78 @@
     <br>
     <br>
 
+    <!-- DAILY MEDICINE -->
+    <div class="container-fluid card" id="dailyMed">
+        <div class="row card-header rounded-pill" id="dailymed-header">
+                <p class="text-center header-text">TODAY'S SCHEDULE</p>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3 rounded-pill text-center" id="dailymed-col">
+                <p class="text-center dailymed-coltext">MORNING</p>
+            </div>
+            <div class="col-3 rounded-pill text-center" id="dailymed-col">
+                <p class="text-center dailymed-coltext">AFTERNOON</p>
+            </div>
+            <div class="col-3 rounded-pill text-center" id="dailymed-col">
+                <p class="text-center dailymed-coltext">NIGHT</p>
+            </div>
+            <div class="col-3 rounded-pill text-center" id="dailymed-col">
+                <p class="text-center dailymed-coltext">AS NEEDED</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <ul class="list-unstyled text-center" data-th-each="m:${morning}" data-th-object="${m}">
+                    <li>
+                        <span data-th-text="*{name}"></span>
+                        <p>[<span data-th-text="*{food}"></span>]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="list-unstyled text-center" data-th-each="m:${afternoon}" data-th-object="${m}">
+                    <li>
+                        <span data-th-text="*{name}"></span>
+                        <p>[<span data-th-text="*{food}"></span>]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="list-unstyled text-center" data-th-each="m:${night}" data-th-object="${m}">
+                    <li>
+                        <span data-th-text="*{name}"></span>
+                        <p>[<span data-th-text="*{food}"></span>]</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="list-unstyled text-center" data-th-each="m:${needed}" data-th-object="${m}">
+                    <li>
+                        <span data-th-text="*{name}"></span>
+                        <p>[<span data-th-text="*{food}"></span>]</p>
+                    </li>
+                </ul>
+            </div>
+         </div>
+    </div>
+     
+
+    <br>
+    <br>
 
     <!-- MEDICINE TABLE -->
-    <div class="table-responsive">
+    <div class="table-responsive card">
         <table class="table align-middle rounded table-nonfluid text-center">
             <thead class="table-borderless bold">
                 <tr>
                     <th style="width: 10%">MEDICINE</th>
-                    <th style="width: 8%">START DATE</th>
-                    <th style="width: 8%">END DATE</th>
-                    <th style="width: 15%">FREQUENCY OF CONSUMPTION</th>
-                    <th style="width: 9%">BEFORE / AFTER FOOD</th>
+                    <th style="width: 9%">START DATE</th>
+                    <th style="width: 9%">END DATE</th>
+                    <th style="width: 13%">FREQUENCY OF CONSUMPTION</th>
+                    <th style="width: 10%">BEFORE / AFTER FOOD</th>
                     <th style="width: 15%">ACTIVE INGREDIENTS</th>
-                    <th style="width: 20%">ADVERSE REACTIONS</th>
+                    <th style="width: 19%">ADVERSE REACTIONS</th>
                     <th></th>
                     <th>
                         <a data-th-href="@{/medicine/search}">
@@ -103,6 +162,14 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="footer fixed-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
     </div>
 
 

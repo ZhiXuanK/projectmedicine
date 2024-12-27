@@ -78,13 +78,25 @@
                         <label for="note" class="form-label bold">IMPORTANT NOTES</label>
                         <input type="text" data-th-field="*{note}" id="note" class="form-control">
                     </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-outline-primary float-right">Submit</button>
-                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <a class="btn btn-outline-primary" data-th-href="@{/dashboard/visit}">BACK</a>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <button type="submit" class="btn btn-outline-primary float-end">UPDATE</button>
                 </div>
             </div>
         </form>
 
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer static-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
     </div>
 
     <!--BOOTSTRAP JS-->

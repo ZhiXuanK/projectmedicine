@@ -53,43 +53,57 @@
     <br>
 
     <!-- ADD VISIT FORM -->
-    <div class="container-fluid" id="form">
-        <form method="POST" action="/visit/add" data-th-object="${visit}" class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-2 g-2">
-                <div class="col-xs-6">
-                    <div class="text-center">
-                        <img data-th-src="@{/images/doctor.jpeg}"
-                            class="card-img rounded-circle border border-3 form-image">
+    <div class="card">
+        <div class="container-fluid" id="form">
+            <form method="POST" action="/visit/add" data-th-object="${visit}" class="container-fluid">
+                <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <div class="col-xs-6">
+                        <div class="text-center">
+                            <img data-th-src="@{/images/doctor.jpeg}"
+                                class="card-img rounded-circle border border-3 form-image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label bold">DOCTOR'S NAME</label>
+                            <input type="text" class="form-control" id="name" data-th-field="*{name}">
+                            <div id="nameError" class="form-text">
+                                <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
+                                    data-th-errorclass="error"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label bold">DOCTOR'S NAME</label>
-                        <input type="text" class="form-control" id="name" data-th-field="*{name}">
-                        <div id="nameError" class="form-text">
-                            <span data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
-                                data-th-errorclass="error"></span>
+                    <div class="col-xs-6">
+                        <div class="mb-3">
+                            <label for="date" class="form-label bold">DATE OF VISIT</label>
+                            <input type="date" data-th-field="*{date}" class="form-control">
+                            <div id="dateError" class="form-text">
+                                <span data-th-if="${#fields.hasErrors('date')}" data-th-errors="*{date}"
+                                    data-th-errorclass="error"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="note" class="form-label bold">IMPORTANT NOTES</label>
+                            <input type="text" data-th-field="*{note}" id="note" class="form-control">
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="mb-3">
-                        <label for="date" class="form-label bold">DATE OF VISIT</label>
-                        <input type="date" data-th-field="*{date}" class="form-control">
-                        <div id="dateError" class="form-text">
-                            <span data-th-if="${#fields.hasErrors('date')}" data-th-errors="*{date}"
-                                data-th-errorclass="error"></span>
-                        </div>
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <a class="btn btn-outline-primary" data-th-href="@{/dashboard/visit}">BACK</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="note" class="form-label bold">IMPORTANT NOTES</label>
-                        <input type="textarea" data-th-field="*{note}" id="note" class="form-control">
-                    </div>
-                    <div class="text-end">
-                        <button type="submit" class="btn btn-outline-primary float-right">Submit</button>
+                    <div class="col-sm-6 text-right">
+                        <button type="submit" class="btn btn-outline-primary float-end">Submit</button>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+    </div>
+    
 
+    <!-- FOOTER -->
+    <div class="footer fixed-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
     </div>
 
     <!--BOOTSTRAP JS-->

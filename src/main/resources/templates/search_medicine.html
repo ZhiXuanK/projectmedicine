@@ -41,7 +41,8 @@
                     </li>
                     <li class="nav-item">
                         <form method="POST" action="/dashboard/logout">
-                            <button type="submit" class="btn btn-outline-primary bold float-end" id="navButton">LOG OUT</button>
+                            <button type="submit" class="btn btn-outline-primary bold float-end" id="navButton">LOG
+                                OUT</button>
                         </form>
                     </li>
                 </ul>
@@ -53,10 +54,10 @@
     <br>
 
 
-    
+
     <!-- SEARCH FOR MEDICATION -->
 
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex card card-thin align-items-center justify-content-center">
         <div class="mx-auto">
             <div class="container-fluid" id="form">
                 <div class="row">
@@ -72,14 +73,27 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" class="btn btn-outline-primary float-end">SEARCH</button>
+                            <div class="row">
+                                <div class="col-sm-6 text-left">
+                                    <a class="btn btn-outline-primary" data-th-href="@{/dashboard/medicine}">BACK</a>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button type="submit" class="btn btn-outline-primary float-end">SEARCH</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 
+    <!-- FOOTER -->
+    <div class="footer fixed-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
+    </div>
 
     <!--BOOTSTRAP JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

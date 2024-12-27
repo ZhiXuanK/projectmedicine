@@ -47,6 +47,43 @@ public class MedicineService {
         return results;
     }
 
+    public Map<String, List<Medicine>> getTodayMedicine(List<Medicine> medicineList){
+        Date today = new Date();
+        
+        List<Medicine> morning = new LinkedList<>();
+        List<Medicine> afternoon = new LinkedList<>();
+        List<Medicine> night = new LinkedList<>();
+        List<Medicine> needed = new LinkedList<>();
+
+        for (Medicine m:medicineList){
+            //should be taken today
+            if (today.after(m.getStartDate()) && today.before(m.getEndDate())){
+                //morning
+                if (m.getFrequency().contains("morning")){
+                    morning.add(m);
+                }
+                if (m.getFrequency().contains("afternoon")){
+                    afternoon.add(m);
+                }
+                if (m.getFrequency().contains("night")){
+                    night.add(m);
+                }
+                if (m.getFrequency().contains("as needed")){
+                    needed.add(m);
+                }
+            }
+        }
+
+        Map<String, List<Medicine>> results = new HashMap<>();
+        results.put("morning", morning);
+        results.put("afternoon", afternoon);
+        results.put("night", night);
+        results.put("needed", needed);
+
+        return results;
+
+    }
+
     public void deleteMedicine(String username, String uuid){
         repo.deleteMedicine(username, uuid);
     }

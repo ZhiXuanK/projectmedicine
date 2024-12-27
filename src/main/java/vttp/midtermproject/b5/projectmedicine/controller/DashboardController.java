@@ -41,6 +41,8 @@ public class DashboardController {
 
         String username = (String) sess.getAttribute("username");
 
+        //get medicine list
+
         List<Medicine> medicineList = new LinkedList<>();
         for (Map.Entry<String, Medicine> en : medSvc.getAllMedicine(username).entrySet()) {
             Medicine med = en.getValue();
@@ -51,6 +53,20 @@ public class DashboardController {
             Comparator.comparing(Medicine::getStartDate).thenComparing(Medicine::getEndDate));
 
         model.addAttribute("medicineList", medicineList);
+
+        //get medicine of the day list
+        Map<String, List<Medicine>> dayMedicineList = medSvc.getTodayMedicine(medicineList);
+
+        dayMedicineList.values().forEach(medList ->medList.sort(Comparator.comparing(Medicine::getFood).reversed()));
+
+        //for (List<Medicine> medList:dayMedicineList){
+        //    medList.sort(Comparator.comparing(Medicine::getFood).reversed());
+        //}
+
+        model.addAttribute("morning", dayMedicineList.get("morning"));
+        model.addAttribute("afternoon", dayMedicineList.get("afternoon"));
+        model.addAttribute("night", dayMedicineList.get("night"));
+        model.addAttribute("needed", dayMedicineList.get("needed"));
 
         return "dashboard_medicine";
     }

@@ -1,6 +1,10 @@
 package vttp.midtermproject.b5.projectmedicine.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -44,6 +49,7 @@ public class LoginController {
         if (bindings.hasErrors()){
             return "login";
         }
+
         //check if username exist
         if (!svc.checkIfUserExist(user)){
             FieldError err = new FieldError("user", "username", "user does not exist. please create an account" );

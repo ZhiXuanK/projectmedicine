@@ -5,6 +5,7 @@ body {
     font-family: "nunito", sans-serif;
     font-weight: 400;
     font-style: normal;
+    background: linear-gradient(rgba(255, 255, 255, .75), rgba(255, 255, 255, .75)), url(/images/background.jpeg);
 }
 
 .bold {
@@ -17,6 +18,34 @@ body {
     font-family: "nunito", sans-serif;
     font-weight: 900;
     font-style: normal;
+}
+
+.card {
+    background-color: #fff8d6;
+    border-radius: 1.25rem;
+    margin: 3% 3%;
+    border-color: #5c4033;
+    border-width: 2px;
+    box-shadow: 0 10px 10px 0 #d6d9e2;
+}
+
+.card-thin {
+    margin: 3% 25%;
+}
+
+.card-header {
+    background-color: #5c4033;
+    color: #fff;
+}
+
+.header-text {
+    font-family: "nunito", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color:#fff;
+    font-size: 35px;
+    margin: 2px;
+    padding: 2px;
 }
 
 /* NAV BAR */
@@ -32,23 +61,23 @@ body {
     font-style: normal;
 }
 
-.navbar-brand > img { 
+.navbar-brand>img {
     height: 50px;
     width: 50px
 }
 
-.navbar-nav > li {
+.navbar-nav>li {
     padding-left: 15px;
     padding-right: 15px;
     font-size: 20px;
-    font-weight:700;
+    font-weight: 700;
 }
 
-.navbar-nav li a{
+.navbar-nav li a {
     color: #fff;
 }
 
-.navbar-nav > li a:hover {
+.navbar-nav>li a:hover {
     color: #000;
 }
 
@@ -59,16 +88,23 @@ body {
     font-size: 20px;
 }
 
-#navButton:hover{
+#navButton:hover {
     color: #000;
     background-color: #fff;
     border-color: #fff;
 }
 
-/* RECENT VISIT CARD */
-.card {
-    background-color: #fff8d6;
+/* FOOTER */
+.footer {
+    color:#fff;
+    background-color: #5c4033;
 }
+
+.footer p {
+    margin: 0;
+}
+
+/* RECENT VISIT CARD */
 
 #visitCard {
     display: flex !important;
@@ -77,14 +113,14 @@ body {
 }
 
 .btn-outline-primary {
-    color:#5c4033;
+    color: #5c4033;
     border-color: #5c4033;
     font-size: 15px;
     display: inline-block;
 }
 
 .btn-outline-primary:hover {
-    color:#fff;
+    color: #fff;
     background-color: #5c4033;
     border-color: #5c4033;
     display: inline-block;
@@ -100,12 +136,12 @@ body {
 }
 
 /* TABLE */
-.table{
+.table {
     --bs-table-bg: #fff8d6;
 }
 
 .table-nonfluid {
-    width:94% !important;
+    width: 98% !important;
     margin-left: auto;
     margin-right: auto;
 }
@@ -132,61 +168,29 @@ body {
     width: 350px;
 }
 
+/* ROW */
+#dailyMed {
+    background-color: #fff8d6;
+    width: 94%;
+    padding: 2%;
+}
 
-.search-bar {
-    --size: 70px;
-    --padding: 8px;
-    --expanded-width: 600px;
-  
-    display: flex;
-    justify-content: flex-end;
-    background-color: #fff;
-    box-shadow: 0 10px 10px 0 #d6d9e2;
-    border-radius: 100px;
-    outline: 1px solid transparent;
-    overflow: hidden;
-  
-    padding: var(--padding);
-    margin-inline: auto;
-    width: var(--size);
-    height: var(--size);
-    max-width: 100%;
-    transition: width 0.5s, outline 0.5s;
-  }
-  
-  .search-bar:focus-within {
-    width: var(--expanded-width);
-    outline: 1px solid #2e2e2e;
-  }
-  
-  .search-input {
-    font-size: 18px;
-    color: #3a3a3a;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    margin-inline: 1rem;
-    flex: auto;
-  
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-  
-  .search-bar:focus-within .search-input {
-    opacity: 1;
-  }
-  
-  .search-submit {
-    flex: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    color: #fff;
-    background-color: #3a3a3a;
-    border-radius: 50%;
-    border: none;
-    width: calc(var(--size) - var(--padding) - var(--padding));
-    aspect-ratio: 1;
-    cursor: pointer;
-  }
+#dailymed-header {
+    margin: 0;
+    padding: 0;
+}
+
+#dailymed-col {
+    /*background-color: #5c4033;
+    color:#000;*/
+}
+
+.dailymed-coltext {
+    font-family: "nunito", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color:#5c4033;
+    font-size: 25px;
+    margin: 2px;
+    padding: 2px;
+}

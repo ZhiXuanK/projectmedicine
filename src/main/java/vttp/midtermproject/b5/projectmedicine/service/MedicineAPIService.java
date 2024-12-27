@@ -47,7 +47,20 @@ public class MedicineAPIService {
 
       try{
          resp = template.exchange(req, String.class);
-         return true;
+         String payload = resp.getBody();
+         System.out.println(payload);
+   
+         JsonArray activeIngredientsArray = Json.createReader(new StringReader(payload))
+            .readObject()
+            .getJsonArray("results")
+            .getJsonObject(0)
+            .getJsonArray("active_ingredients");
+         
+         if (activeIngredientsArray == null){
+            return false;
+         } else {
+            return true;
+         }
       } catch (HttpStatusCodeException ex){
          return false;
       }

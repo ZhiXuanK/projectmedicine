@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,46 +10,67 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="https://use.typekit.net/ryy8lbe.css">
 </head>
+
 <body>
 
     <br>
 
     <!-- CREATE ACCOUNT-->
-    <div class="container-fluid" id="form-thin">
-        <form method="POST" action="/createuser" data-th-object="${user}">
-            <div class="mb-3 text-center">
-                <img data-th-src="@{/images/logo.png}" class="rounded-circle align-text-center border border-3 form-image">
-            </div>
-            <div class="mb-3">
-                <label for="username" class="form-label bold">USERNAME</label>
-                <input type="text" data-th-field="*{username}" class="form-control" id="username" placeholder="USERNAME">
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}" data-th-errorclass="error"></span>
+    <div class="card card-thin">
+        <div class="container-fluid" id="form-thin">
+            <br>
+            <form method="POST" action="/createuser" data-th-object="${user}">
+                <div class="mb-3 text-center">
+                    <img data-th-src="@{/images/logo.png}"
+                        class="rounded-circle align-text-center border border-3 form-image">
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label bold">PASSWORD</label>
-                <input type="password" data-th-field="*{password}" class="form-control" id="password" placeholder="PASSWORD">
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}" data-th-errorclass="error"></span>
+                <div class="mb-3">
+                    <label for="username" class="form-label bold">USERNAME</label>
+                    <input type="text" data-th-field="*{username}" class="form-control" id="username"
+                        placeholder="USERNAME">
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('username')}" data-th-errors="*{username}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="confirm_password" class="form-label bold">CONFIRM PASSWORD</label>
-                <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="RE-ENTER PASSWORD">
-            </div>
-            <div class="row">
-                <div class="text-right">
-                    <button type="submit" class="btn btn-outline-primary float-end">SIGN UP</button>
+                <div class="mb-3">
+                    <label for="password" class="form-label bold">PASSWORD</label>
+                    <input type="password" data-th-field="*{password}" class="form-control" id="password"
+                        placeholder="PASSWORD">
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label bold">CONFIRM PASSWORD</label>
+                    <input type="password" name="confirm_password" class="form-control" id="confirm_password"
+                        placeholder="RE-ENTER PASSWORD">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <a class="btn btn-outline-primary" data-th-href="@{/login}">BACK</a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button type="submit" class="btn btn-outline-primary float-end">SIGN UP</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+        </div>
     </div>
 
+    <!-- FOOTER -->
+    <div class="footer static-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
+    </div>
 
     <!--BOOTSTRAP JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

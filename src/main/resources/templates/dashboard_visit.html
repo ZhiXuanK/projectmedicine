@@ -73,17 +73,16 @@
     <br>
 
     <!-- DOCTOR VISIT TABLE -->
-    <div class="table-responsive">
+    <div class="table-responsive card">
         <table class="table align-middle rounded table-nonfluid">
             <thead class="table-borderless bold">
                 <tr>
                     <td class="col-sm-2">DOCTOR'S NAME</td>
                     <td class="col-sm-2">VISIT DATE</td>
                     <td class="col-sm-6">IMPORTANT NOTES</td>
-                    <td class="col-sm-1"></td>
-                    <td class="col-sm-1">
+                    <td class="col-sm-2 text-end" colspan="2">
                         <a data-th-href="@{/visit/add}">
-                            <button type="button" class="btn btn-outline-primary float-right">ADD VISIT</button>
+                            <button type="button" class="btn btn-outline-primary float-right">ADD</button>
                         </a>
                     </td>
                 </tr>
@@ -93,12 +92,12 @@
                     <td data-th-text="*{name}"></td>
                     <td data-th-text="*{#dates.format(date, 'dd MMM yyyy')}"></td>
                     <td data-th-text="*{note}"></td>
-                    <td>
+                    <td class="text-end">
                         <a data-th-href="@{/visit/{UUID}(UUID=*{UUID})}">
                             <button type="button" class="btn btn-outline-primary float-right">EDIT</button>
                         </a>
                     </td>
-                    <td>
+                    <td class="text-end">
                         <form method="POST" action="/visit/delete">
                             <input type="hidden" name="UUID" data-th-value="*{UUID}">
                             <button type="submit" class="btn btn-outline-primary float-right">DELETE</button>
@@ -107,6 +106,13 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer fixed-bottom bg-body-tertiaryr">
+        <div class="text-center">
+            <p>@All rights reserved, designed and developed by PURIN MEDICAL</p>
+        </div>
     </div>
 
     <!--BOOTSTRAP JS-->
