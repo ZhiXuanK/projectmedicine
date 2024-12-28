@@ -142,7 +142,7 @@ public class MedicineAPIService {
       try{
          resp = template.exchange(req, String.class);
       } catch (HttpStatusCodeException ex){
-         return "adverse reactions of this medicine is not recorded in database";
+         return "not recorded";
       }
 
       String payload = resp.getBody();
@@ -159,7 +159,7 @@ public class MedicineAPIService {
 
       } catch (Exception e) {
 
-         return "no adverse reactions recorded for this medicine";
+         return "no adverse reactions";
 
       }
    }
