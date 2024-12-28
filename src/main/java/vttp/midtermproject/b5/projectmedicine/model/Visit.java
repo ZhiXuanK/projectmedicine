@@ -71,6 +71,10 @@ public class Visit{
                 + "]";
     }
 
+    public String toPrintString(){
+        return name +","+ date +","+ note;
+    }
+
     
 
 }

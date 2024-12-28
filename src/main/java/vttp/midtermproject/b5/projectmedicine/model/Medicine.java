@@ -104,5 +104,9 @@ public class Medicine {
                 + adverse_reactions + ", UUID=" + UUID + "]";
     }
 
+    public String toPrintString(){
+        return name +","+ frequency.toString().replace(",", ";") +","+  food +","+  startDate +","+  endDate +","+  active_ingredients.toString().replace(",", ";") +","+  adverse_reactions;
+    }
+
     
 }

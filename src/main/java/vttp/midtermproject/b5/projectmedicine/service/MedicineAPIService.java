@@ -48,7 +48,7 @@ public class MedicineAPIService {
       try{
          resp = template.exchange(req, String.class);
          String payload = resp.getBody();
-         System.out.println(payload);
+         //System.out.println(payload);
    
          JsonArray activeIngredientsArray = Json.createReader(new StringReader(payload))
             .readObject()

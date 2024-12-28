@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,6 +78,12 @@ public class MedicineController {
             return "add_medicine";
         }
 
+        if (!medicine.getStartDate().before(medicine.getEndDate())){
+            FieldError error = new FieldError("medicine", "endDate", "end date should be after start date");
+            bindings.addError(error);
+            return "add_medicine";
+        }
+
         //populate fields of medicine with external API
         medicine.setActive_ingredients(apisvc.getActiveIngredients(medicine.getName()));
         medicine.setAdverse_reactions(apisvc.getAdverseEffects(medicine.getName()));
@@ -118,10 +125,17 @@ public class MedicineController {
         Model model,
         HttpSession sess
     ){
-        System.out.println(bindings.getAllErrors());
+        //System.out.println(bindings.getAllErrors());
         if (bindings.hasErrors()){
             return "edit_medicine";
         }
+
+        if (!medicine.getStartDate().before(medicine.getEndDate())){
+            FieldError error = new FieldError("medicine", "endDate", "end date should be after start date");
+            bindings.addError(error);
+            return "edit_medicine";
+        }
+
         String username = (String) sess.getAttribute("username");
 
         svc.addMedicine(username, medicine);
