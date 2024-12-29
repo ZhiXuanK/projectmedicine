@@ -1,6 +1,7 @@
 package vttp.midtermproject.b5.projectmedicine.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -41,7 +42,7 @@ public class VisitController {
         return "add_visit";
     }
 
-    @PostMapping("/add")
+    @PostMapping(path={"/add"}, consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postAddVisit(
         @Valid @ModelAttribute Visit visit,
         BindingResult bindings,
@@ -82,7 +83,8 @@ public class VisitController {
 
     }
 
-    @PostMapping("/edit")
+    //no form validation for edit as the two fields that require validation(name + date) cannot be edited
+    @PostMapping(path={"/edit"}, consumes=MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postEditVisit(
         @ModelAttribute Visit visit,
         Model model,

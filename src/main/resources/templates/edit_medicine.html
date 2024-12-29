@@ -41,7 +41,8 @@
                     </li>
                     <li class="nav-item">
                         <form method="POST" action="/dashboard/logout">
-                            <button type="submit" class="btn btn-outline-primary bold float-end" id="navButton">LOG OUT</button>
+                            <button type="submit" class="btn btn-outline-primary bold float-end" id="navButton">LOG
+                                OUT</button>
                         </form>
                     </li>
                 </ul>
@@ -52,107 +53,110 @@
     <br>
     <br>
 
-    <!-- ADD MEDICINE FORM-->
-    <div class="container-fluid" id="form-thin">
-        <form method="POST" action="/medicine/edit" data-th-object="${medicine}">
-            <div class="mb-3">
-                <label for="name" class="form-label bold">MEDICINE NAME</label>
-                <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
-            </div>
-            <div class="mb-3">
-                <label for="frequency" class="form-label bold">FREQUENCY OF MEDICATION CONSUMPTION</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="morning" value="morning"
-                        data-th-field="*{frequency}">
-                    <label class="form-check-label" for="morning">
-                        Morning
-                    </label>
+    <!-- EDIT MEDICINE FORM-->
+    <div class="card card-thin">
+        <div class="container-fluid" id="form-thin">
+            <form method="POST" action="/medicine/edit" data-th-object="${medicine}">
+                <div class="mb-3">
+                    <label for="name" class="form-label bold">MEDICINE NAME</label>
+                    <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="afternoon" value="afternoon"
-                        data-th-field="*{frequency}">
-                    <label class="form-check-label" for="afternoon">
-                        Afternoon
-                    </label>
+                <div class="mb-3">
+                    <label for="frequency" class="form-label bold">MEDICATION INTAKE SCHEDULE</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="morning" value="morning"
+                            data-th-field="*{frequency}">
+                        <label class="form-check-label" for="morning">
+                            Morning
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="afternoon" value="afternoon"
+                            data-th-field="*{frequency}">
+                        <label class="form-check-label" for="afternoon">
+                            Afternoon
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="night" value="night"
+                            data-th-field="*{frequency}">
+                        <label class="form-check-label" for="night">
+                            Night
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="as needed" value="as needed"
+                            data-th-field="*{frequency}">
+                        <label class="form-check-label" for="as needed">
+                            As Needed
+                        </label>
+                    </div>
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('frequency')}" data-th-errors="*{frequency}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="night" value="night"
-                        data-th-field="*{frequency}">
-                    <label class="form-check-label" for="night">
-                        Night
-                    </label>
+                <div class="mb-3">
+                    <label for="food" class="form-label bold">BEFORE OR AFTER FOOD?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="food" id="before" data-th-field="*{food}"
+                            value="before">
+                        <label class="form-check-label" for="before">
+                            Before
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="food" id="after" data-th-field="*{food}"
+                            value="after">
+                        <label class="form-check-label" for="after">
+                            After
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="food" id="not applicable"
+                            data-th-field="*{food}" value="not applicable">
+                        <label class="form-check-label" for="not applicable">
+                            Not Applicable
+                        </label>
+                    </div>
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('food')}" data-th-errors="*{food}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="as needed" value="as needed"
-                        data-th-field="*{frequency}">
-                    <label class="form-check-label" for="as needed">
-                        As Needed
-                    </label>
+                <div class="mb-3">
+                    <label for="startDate" class="form-label bold">MEDICATION START DATE</label>
+                    <input class="form-control" type="date" id="startDate" data-th-field="*{startDate}">
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('startDate')}" data-th-errors="*{startDate}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('frequency')}" data-th-errors="*{frequency}"
-                        data-th-errorclass="error"></span>
+                <div class="mb-3">
+                    <label for="endDate" class="form-label bold">MEDICATION END DATE</label>
+                    <input class="form-control" type="date" id="endDate" data-th-field="*{endDate}">
+                    <div class="form-text">
+                        <span data-th-if="${#fields.hasErrors('endDate')}" data-th-errors="*{endDate}"
+                            data-th-errorclass="error"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3">
-                <label for="food" class="form-label bold">BEFORE OR AFTER FOOD?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="food" id="before" data-th-field="*{food}"
-                        value="before">
-                    <label class="form-check-label" for="before">
-                        Before
-                    </label>
+                <div>
+                    <input type="hidden" data-th-field="*{active_ingredients}">
+                    <input type="hidden" data-th-field="*{adverse_reactions}">
+                    <input type="hidden" data-th-field="*{UUID}">
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="food" id="after" data-th-field="*{food}"
-                        value="after">
-                    <label class="form-check-label" for="after">
-                        After
-                    </label>
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <a class="btn btn-outline-primary" data-th-href="@{/dashboard/medicine}">BACK</a>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button type="submit" class="btn btn-outline-primary float-end">UPDATE</button>
+                    </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="food" id="not applicable" data-th-field="*{food}"
-                        value="not applicable">
-                    <label class="form-check-label" for="not applicable">
-                        Not Applicable
-                    </label>
-                </div>
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('food')}" data-th-errors="*{food}"
-                        data-th-errorclass="error"></span>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="startDate" class="form-label bold">MEDICATION START DATE</label>
-                <input class="form-control" type="date" id="startDate" data-th-field="*{startDate}">
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('startDate')}" data-th-errors="*{startDate}"
-                        data-th-errorclass="error"></span>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="endDate" class="form-label bold">MEDICATION END DATE</label>
-                <input class="form-control" type="date" id="endDate" data-th-field="*{endDate}">
-                <div class="form-text">
-                    <span data-th-if="${#fields.hasErrors('endDate')}" data-th-errors="*{endDate}"
-                        data-th-errorclass="error"></span>
-                </div>
-            </div>
-            <div>
-                <input type="hidden" data-th-field="*{active_ingredients}">
-                <input type="hidden" data-th-field="*{adverse_reactions}">
-                <input type="hidden" data-th-field="*{UUID}">
-            </div>
-            <div class="row">
-                <div class="col-sm-6 text-left">
-                    <a class="btn btn-outline-primary" data-th-href="@{/dashboard/medicine}">BACK</a>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <button type="submit" class="btn btn-outline-primary float-end">UPDATE</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+
 
     <!-- FOOTER -->
     <div class="footer fixed-bottom bg-body-tertiaryr">

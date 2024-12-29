@@ -53,44 +53,46 @@
     <br>
 
     <!-- EDIT VISIT FORM -->
-    <div class="container-fluid" id="form">
-        <form method="POST" action="/visit/edit" data-th-object="${visit}" class="container-fluid">
-            <div class="row row-cols-1 row-cols-md-2 g-2">
-                <div class="col-xs-6">
-                    <div class="text-center">
-                        <img data-th-src="@{/images/doctor.jpeg}"
-                            class="card-img rounded-circle border border-3 form-image">
+    <div class="card">
+        <div class="container-fluid" id="form">
+            <form method="POST" action="/visit/edit" data-th-object="${visit}" class="container-fluid">
+                <div class="row row-cols-1 row-cols-md-2 g-2">
+                    <div class="col-xs-6">
+                        <div class="text-center">
+                            <img data-th-src="@{/images/doctor.jpeg}"
+                                class="card-img rounded-circle border border-3 form-image" style="height: 288px; width: 288px">
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label bold">DOCTOR'S NAME</label>
+                            <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
+                        </div>
+                        <div>
+                            <input type="hidden" data-th-field="*{UUID}">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label bold">DOCTOR'S NAME</label>
-                        <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
-                    </div>
-                    <div>
-                        <input type="hidden" data-th-field="*{UUID}">
+                    <div class="col-xs-6">
+                        <div class="mb-3">
+                            <label for="date" class="form-label bold">DATE OF VISIT</label>
+                            <input type="date" data-th-field="*{date}" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="note" class="form-label bold">IMPORTANT NOTES</label>
+                            <input type="text" data-th-field="*{note}" id="note" class="form-control">
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="mb-3">
-                        <label for="date" class="form-label bold">DATE OF VISIT</label>
-                        <input type="date" data-th-field="*{date}" class="form-control" readonly>
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <a class="btn btn-outline-primary" data-th-href="@{/dashboard/visit}">BACK</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="note" class="form-label bold">IMPORTANT NOTES</label>
-                        <input type="text" data-th-field="*{note}" id="note" class="form-control">
+                    <div class="col-sm-6 text-right">
+                        <button type="submit" class="btn btn-outline-primary float-end">UPDATE</button>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 text-left">
-                    <a class="btn btn-outline-primary" data-th-href="@{/dashboard/visit}">BACK</a>
-                </div>
-                <div class="col-sm-6 text-right">
-                    <button type="submit" class="btn btn-outline-primary float-end">UPDATE</button>
-                </div>
-            </div>
-        </form>
-
+            </form>
+        </div>
     </div>
+    
 
     <!-- FOOTER -->
     <div class="footer fixed-bottom bg-body-tertiaryr">

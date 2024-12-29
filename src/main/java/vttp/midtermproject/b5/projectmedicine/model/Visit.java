@@ -13,7 +13,7 @@ public class Visit{
     private String username;
 
     //doctor's name
-    @NotBlank(message="please input doctor's name")
+    @NotBlank(message="please input the doctor's name")
     @Size(min=3, max=128, message="name should be within 3 and 128 characters")
     private String name;
 

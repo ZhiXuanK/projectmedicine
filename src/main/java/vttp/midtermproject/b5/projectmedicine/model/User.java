@@ -11,7 +11,7 @@ public class User {
     private String username;
     
     @NotBlank(message="please input your password")
-    @Pattern(regexp="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", message="password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number")
+    @Pattern(regexp="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", message="password must contain minimum eight characters, at least one uppercase letter, one lowercase letter & one number")
     private String password;
 
     public String getUsername() {

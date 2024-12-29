@@ -13,7 +13,7 @@ public class Medicine {
     
     private String name;
 
-    @NotEmpty(message="please select how often the medication has to be taken")
+    @NotEmpty(message="please input your medication intake schedule")
     private List<String> frequency;
     
     @NotBlank(message="please select if the medication has to be taken before or after food")
