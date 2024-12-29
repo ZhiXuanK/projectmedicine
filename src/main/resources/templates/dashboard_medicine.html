@@ -156,11 +156,17 @@
                     </td>
                     <td data-th-text="*{food}"></td>
                     <td>
-                        <ul class="list-unstyled" data-th-each="a : *{active_ingredients}">
-                            <li data-th-text="${a}"></li>
-                        </ul>
+                        <div class="scroll-cell">
+                            <ul class="list-unstyled" data-th-each="a : *{active_ingredients}">
+                                <li data-th-text="${a}"></li>
+                            </ul>
+                        </div>
                     </td>
-                    <td data-th-text="*{adverse_reactions}"></td>
+                    <td>
+                        <div class="scroll-cell">
+                            <p data-th-text="*{adverse_reactions}"></p>
+                        </div>
+                    </td>
                     <td>
                         <a data-th-href="@{/medicine/{UUID}(UUID=*{UUID})}">
                             <button type="button" class="btn btn-outline-primary float-end">EDIT</button>

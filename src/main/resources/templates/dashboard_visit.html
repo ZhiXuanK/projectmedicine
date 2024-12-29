@@ -60,7 +60,9 @@
                     <h3 class="card-title black" data-th-text="*{name}"></h3>
                     <img data-th-src="@{/images/doctor.jpeg}" class="card-img rounded-circle border border-3">
                     <p class="card-text bold" id="card-date" data-th-text="*{#dates.format(date, 'dd MM yyyy')}"></p>
-                    <p class="card-text bold overflow-auto" data-th-text="*{note}"></p>
+                    <div class="scroll-cell-visit">
+                        <p class="card-text bold overflow-auto" data-th-text="*{note}"></p>
+                    </div>
                 </div>
                 <div class="card-footer text-end">
                     <a data-th-href="@{/visit/{UUID}(UUID=*{UUID})}" class="btn btn-outline-primary float-right">EDIT</a>
@@ -74,7 +76,7 @@
 
     <!-- DOCTOR VISIT TABLE -->
     <div class="table-responsive card">
-        <table class="table align-middle rounded table-nonfluid">
+        <table class="table align-middle rounded text-center table-nonfluid">
             <thead class="table-borderless bold">
                 <tr>
                     <td class="col-sm-2">DOCTOR'S NAME</td>
@@ -96,7 +98,11 @@
                 <tr data-th-each="c : ${visitList}" data-th-object="${c}">
                     <td data-th-text="*{name}"></td>
                     <td data-th-text="*{#dates.format(date, 'dd MMM yyyy')}"></td>
-                    <td data-th-text="*{note}"></td>
+                    <td>
+                        <div class="scroll-cell">
+                            <p data-th-text="*{note}"></p>
+                        </div>
+                    </td>
                     <td class="text-end">
                         <a data-th-href="@{/visit/{UUID}(UUID=*{UUID})}">
                             <button type="button" class="btn btn-outline-primary float-right">EDIT</button>
