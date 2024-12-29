@@ -26,6 +26,7 @@ public class MedicineAPIService {
    public static final String NDC_API = "https://api.fda.gov/drug/ndc.json";
    public static final String LABEL_API = "https://api.fda.gov/drug/label.json";
 
+   //check if medicine exist in database
    public Boolean checkMedicine(String medicineName){
 
       String searchParams = "brand_name:" + medicineName + "+generic_name:" + medicineName;
@@ -48,8 +49,8 @@ public class MedicineAPIService {
       try{
          resp = template.exchange(req, String.class);
          String payload = resp.getBody();
-         //System.out.println(payload);
    
+         //read payload to get list of active ingredients
          JsonArray activeIngredientsArray = Json.createReader(new StringReader(payload))
             .readObject()
             .getJsonArray("results")
@@ -103,22 +104,14 @@ public class MedicineAPIService {
          .getJsonObject(0)
          .getJsonArray("active_ingredients");
 
-      //JsonArrayBuilder activeIngredientsBuilder = Json.createArrayBuilder();
-
       for (int i=0; i < activeIngredientsArray.size(); i++){
          JsonObject obj = activeIngredientsArray.getJsonObject(i);
-         //loratidine [10mg]
          String ingredient = obj.getString("name") + " [" + obj.getString("strength") + "]";
          results.add(ingredient);
-         //activeIngredientsBuilder.add(ingredient);
       }
-
-      //JsonArray activeIngredients = activeIngredientsBuilder.build();
 
       return results;
    }
-
-
 
    public String getAdverseEffects(String medicineName){
 

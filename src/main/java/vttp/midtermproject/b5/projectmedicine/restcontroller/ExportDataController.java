@@ -21,11 +21,12 @@ import vttp.midtermproject.b5.projectmedicine.service.MedicineService;
 import vttp.midtermproject.b5.projectmedicine.service.VisitService;
 
 
+//export data as pdf that is automatically downloaded when clicked on 
+
 @RestController
 @RequestMapping("/export")
 public class ExportDataController {
 
-    //export data as pdf that is automatically downloaded when clicked on 
     @Autowired
     private MedicineService medSvc;
 
@@ -39,6 +40,7 @@ public class ExportDataController {
         String results = "";
 
         if (sess.getAttribute("username") == null){
+            //produce csv file with "please log in"
             results = "please log in";
         } else {
             String username = (String) sess.getAttribute("username");
@@ -50,8 +52,10 @@ public class ExportDataController {
                     Medicine med = en.getValue();
                     medicineList.add(med);
                 }
+                //generate string with medicine as comma seperated values and approrpriate line seperator
                 results = Constants.generateMedCSV(medicineList);
             } else {
+                //produce csv file with "no medicine history"
                 results = "No Medicine History";
             }
         }
@@ -71,6 +75,7 @@ public class ExportDataController {
         String results = "";
 
         if (sess.getAttribute("username") == null){
+            //produce csv file with "please log in"
             results = "please log in";
         } else {
             String username = (String) sess.getAttribute("username");
@@ -82,8 +87,10 @@ public class ExportDataController {
                     Visit visit = en.getValue();
                     visitList.add(visit);
                 }
+                //create a string with visit as comma seperated value and appropriate line seperator
                 results = Constants.generateVisitCSV(visitList);
             } else {
+                //produce csv with "no visit history"
                 results = "No Visit History";
             }
         }

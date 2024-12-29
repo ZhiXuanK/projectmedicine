@@ -57,10 +57,12 @@
     <div class="card card-thin">
         <div class="container-fluid" id="form-thin">
             <form method="POST" action="/medicine/add" data-th-object="${medicine}">
+                <!-- MEDICINE NAME -->
                 <div class="mb-3">
                     <label for="name" class="form-label bold">MEDICINE NAME</label>
                     <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
                 </div>
+                <!-- MEDICINE INTAKE SCHEDULE -->
                 <div class="mb-3">
                     <label for="frequency" class="form-label bold">MEDICATION INTAKE SCHEDULE</label>
                     <div class="form-check">
@@ -96,6 +98,7 @@
                             data-th-errorclass="error"></span>
                     </div>
                 </div>
+                <!-- BEFORE OR AFTER FOOD -->
                 <div class="mb-3">
                     <label for="food" class="form-label bold">BEFORE OR AFTER FOOD?</label>
                     <div class="form-check">
@@ -124,6 +127,7 @@
                             data-th-errorclass="error"></span>
                     </div>
                 </div>
+                <!-- MEDICATION START DATE -->
                 <div class="mb-3">
                     <label for="startDate" class="form-label bold">MEDICATION START DATE</label>
                     <input class="form-control" type="date" id="startDate" data-th-field="*{startDate}">
@@ -132,6 +136,7 @@
                             data-th-errorclass="error"></span>
                     </div>
                 </div>
+                <!-- MEDICATION END DATE -->
                 <div class="mb-3">
                     <label for="endDate" class="form-label bold">MEDICATION END DATE</label>
                     <input class="form-control" type="date" id="endDate" data-th-field="*{endDate}">

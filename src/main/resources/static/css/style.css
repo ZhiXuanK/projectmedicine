@@ -1,4 +1,4 @@
-/* ADOBE FONTS - NUNITO 400[NORMAL] 700[BOLD] 900[BLACK]
+/* ADOBE FONTS - NUNITO 400[NORMAL] 700[BOLD] 900[BLACK] */
 
 /* GENERAL STANDARDS */
 body {
@@ -94,7 +94,9 @@ body {
     border-color: #fff;
 }
 
+
 /* FOOTER */
+
 .footer {
     color:#fff;
     background-color: #5c4033;
@@ -103,6 +105,7 @@ body {
 .footer p {
     margin: 0;
 }
+
 
 /* RECENT VISIT CARD */
 
@@ -135,7 +138,9 @@ body {
     margin-bottom: 10px;
 }
 
+
 /* TABLE */
+
 .table {
     --bs-table-bg: #fff8d6;
 }
@@ -150,7 +155,9 @@ body {
     height: 260px;
 }
 
+
 /* CONTAINER */
+
 #form {
     background-color: #fff8d6;
     width: 94%;
@@ -168,7 +175,9 @@ body {
     width: 350px;
 }
 
+
 /* ROW */
+
 #dailyMed {
     background-color: #fff8d6;
     width: 94%;
@@ -178,11 +187,6 @@ body {
 #dailymed-header {
     margin: 0;
     padding: 0;
-}
-
-#dailymed-col {
-    /*background-color: #5c4033;
-    color:#000;*/
 }
 
 .dailymed-coltext {

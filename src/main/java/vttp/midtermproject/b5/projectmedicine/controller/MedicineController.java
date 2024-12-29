@@ -36,6 +36,7 @@ public class MedicineController {
     public String getMedicine(
         HttpSession sess
     ){
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null){
             return "redirect:/login";
         }
@@ -49,10 +50,12 @@ public class MedicineController {
         Model model,
         HttpSession sess
     ){
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null){
             return "redirect:/login";
         }
 
+        //check if medicine exist in database
         if (!apisvc.checkMedicine(medicine_name)){
             model.addAttribute("error", "medicine not found");
             return "search_medicine";
@@ -79,6 +82,7 @@ public class MedicineController {
             return "add_medicine";
         }
 
+        //check if medicine start date is before end date
         if (!medicine.getStartDate().before(medicine.getEndDate())){
             FieldError error = new FieldError("medicine", "endDate", "end date should be after start date");
             bindings.addError(error);
@@ -105,6 +109,7 @@ public class MedicineController {
         Model model,
         HttpSession sess
     ){
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null){
             return "redirect:/login";
         }
@@ -131,6 +136,7 @@ public class MedicineController {
             return "edit_medicine";
         }
 
+        //check if medicine start date is before medicine end date
         if (!medicine.getStartDate().before(medicine.getEndDate())){
             FieldError error = new FieldError("medicine", "endDate", "end date should be after start date");
             bindings.addError(error);
@@ -144,7 +150,7 @@ public class MedicineController {
         return "redirect:/dashboard/medicine";
     }
     
-    //DELETE
+    //delete medicine
     @PostMapping("/delete")
     public String postDeleteMedicine(
         @RequestBody MultiValueMap<String, String> form,

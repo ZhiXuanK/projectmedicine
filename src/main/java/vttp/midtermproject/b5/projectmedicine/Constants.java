@@ -13,6 +13,7 @@ public class Constants {
         return id;
     }
 
+    //generate string of comma seperated values with appropriate line seperator
     public static String generateMedCSV(List<Medicine> medicineList){
         String results = "Name" + "," + "Frequency" + "," + "Before or After Food" + "," + "Start Date" + "," + "End Date" + "," + "Active Ingredients" + "," + "Adverse Reactions" + System.lineSeparator();
         for (Medicine med:medicineList){
@@ -21,6 +22,7 @@ public class Constants {
         return results;
     }
 
+    //generate string of comma seperated values with appropriate line seperator
     public static String generateVisitCSV(List<Visit> visitList){
         String results = "Doctor's Name" + "," + "Date" + "," + "Notes" + System.lineSeparator();
         for (Visit visit:visitList){

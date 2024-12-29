@@ -9,6 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+//medicine name, medicine frequency, before/after food, medicine start date, medicine end date, list of active ingredients from API, list of adverse reactions from API, UUID
 public class Medicine {
     
     private String name;
@@ -104,8 +105,9 @@ public class Medicine {
                 + adverse_reactions + ", UUID=" + UUID + "]";
     }
 
+    //generate comma seperated values while maintaining commas within each field
     public String toPrintString(){
-        return name +","+ frequency.toString().replace(",", ";") +","+  food +","+  startDate +","+  endDate +","+  active_ingredients.toString().replace(",", ";") +","+  adverse_reactions;
+        return "\"" + name + "\"" +","+ frequency.toString().replace(",", ";") +","+  food +","+  startDate +","+  endDate +","+  active_ingredients.toString().replace(",", ";") +","+ "\"" + adverse_reactions + "\"";
     }
 
     

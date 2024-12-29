@@ -60,7 +60,7 @@ public class LoginController {
             return "login";
         }
 
-        //create user
+        //set username session attribute
         sess.setAttribute("username", user.getUsername());
         
         return "redirect:/dashboard";

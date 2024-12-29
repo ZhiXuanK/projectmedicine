@@ -62,19 +62,23 @@
                             <img data-th-src="@{/images/doctor.jpeg}"
                                 class="card-img rounded-circle border border-3 form-image" style="height: 288px; width: 288px">
                         </div>
+                        <!-- DOCTOR'S NAME -->
                         <div class="mb-3">
                             <label for="name" class="form-label bold">DOCTOR'S NAME</label>
                             <input type="text" class="form-control" id="name" data-th-field="*{name}" readonly>
                         </div>
+                        <!-- UUID -->
                         <div>
                             <input type="hidden" data-th-field="*{UUID}">
                         </div>
                     </div>
                     <div class="col-xs-6">
+                        <!-- DATE OF VISIT -->
                         <div class="mb-3">
                             <label for="date" class="form-label bold">DATE OF VISIT</label>
                             <input type="date" data-th-field="*{date}" class="form-control" readonly>
                         </div>
+                        <!-- NOTES FROM VISIT -->
                         <div class="mb-3">
                             <label for="note" class="form-label bold">IMPORTANT NOTES</label>
                             <input type="text" data-th-field="*{note}" id="note" class="form-control">

@@ -33,6 +33,7 @@ public class VisitController {
         Model model,
         HttpSession sess
     ){
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null){
             return "redirect:/login";
         }
@@ -69,6 +70,7 @@ public class VisitController {
         Model model,
         HttpSession sess
     ){
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null){
             return "redirect:/login";
         }

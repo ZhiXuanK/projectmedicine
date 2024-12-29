@@ -35,6 +35,8 @@ public class DashboardController {
     public String getDashboard(
             HttpSession sess,
             Model model) {
+
+        //redirect if user is not logged in or if session expired
         if (sess.getAttribute("username") == null) {
             return "redirect:/login";
         }
@@ -49,6 +51,7 @@ public class DashboardController {
             medicineList.add(med);
         }
 
+        //sort medicineList by startdate, then enddate
         Collections.sort(medicineList,
             Comparator.comparing(Medicine::getStartDate).thenComparing(Medicine::getEndDate));
 
@@ -57,11 +60,8 @@ public class DashboardController {
         //get medicine of the day list
         Map<String, List<Medicine>> dayMedicineList = medSvc.getTodayMedicine(medicineList);
 
+        //sort based on whether they should be eaten, before/after meal or not applicable
         dayMedicineList.values().forEach(medList ->medList.sort(Comparator.comparing(Medicine::getFood).reversed()));
-
-        //for (List<Medicine> medList:dayMedicineList){
-        //    medList.sort(Comparator.comparing(Medicine::getFood).reversed());
-        //}
 
         model.addAttribute("morning", dayMedicineList.get("morning"));
         model.addAttribute("afternoon", dayMedicineList.get("afternoon"));
@@ -75,12 +75,15 @@ public class DashboardController {
     public String getVisitDashboard(
             HttpSession sess,
             Model model) {
+
+        //redirect if user is not logged in or session expired
         if (sess.getAttribute("username") == null) {
             return "redirect:/login";
         }
 
         String username = (String) sess.getAttribute("username");
 
+        //get list of visits
         List<Visit> visitList = new LinkedList<>();
 
         for (Map.Entry<String, Visit> en : visitSvc.getAllVisit(username).entrySet()) {
@@ -88,8 +91,10 @@ public class DashboardController {
             visitList.add(visit);
         }
 
+        //sort based on visit date
         visitList.sort((v1,v2) -> v1.getDate().compareTo(v2.getDate()));
 
+        //get top 3 most recent visit
         List<Visit> recentVisit = new LinkedList<>();
 
         for (int i=0; i < 3; i++){
@@ -107,6 +112,8 @@ public class DashboardController {
     @PostMapping("/logout")
     public String postLogOut(
             HttpSession sess) {
+            
+        //log out and invalidate session
         sess.invalidate();
 
         return "redirect:/";

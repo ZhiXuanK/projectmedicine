@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+//username, doctor's name, date of visit, notes from visit, UUID
 public class Visit{
     
     private String username;
@@ -72,7 +73,7 @@ public class Visit{
     }
 
     public String toPrintString(){
-        return name +","+ date +","+ note;
+        return "\"" + name + "\"" +","+ date +","+ "\"" + note + "\"";
     }
 
     
